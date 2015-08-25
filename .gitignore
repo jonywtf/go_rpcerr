@@ -1,0 +1,11 @@
+*
+!*/
+!*.go
+
+!*.sh
+!*.bat
+
+!.gitignore
+!*/.gitignore
+
+pkg
