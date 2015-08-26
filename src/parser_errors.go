@@ -136,7 +136,7 @@ func saveStruct(goFile *GoFile, insert_in_source bool) error {
 			}
 		}
 		if add_rpc_types {
-			file.WriteString("    . \"rpc/types\"\n")
+			file.WriteString("    . \"se/rpc/types\"\n")
 		}
 
 		add_errors := false
