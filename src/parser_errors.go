@@ -2,7 +2,7 @@ package main
 
 /*
  *  Add to .gitignore
- *     *_errgen.go
+ *     *.gen.go
  */
 
 import (
@@ -27,17 +27,13 @@ const errgen_sfx = "_err.gen.go"
 
 var skip_paths = []string{"golang.org", "gopkg.in", "github.com", "google.com"}
 
-func GenErrorInSrc() {
-	var src_path string
-	if len(os.Args) < 2 {
-		src_path = "./../src/"
-	} else {
-		src_path = os.Args[1]
-	}
+func GenErrorInSrc(src_path string) {
 
-	base_dir, _ := filepath.Abs(filepath.Dir(os.Args[0]))
-	base_dir = base_dir + src_path
-	src_path, _ = filepath.Abs(base_dir)
+
+  log.Println(src_path)
+	//base_dir, _ := filepath.Abs(filepath.Dir(os.Args[0]))
+	//base_dir = base_dir + src_path
+	//src_path, _ = filepath.Abs(base_dir)
 
 	filepath.Walk(src_path, func(path string, info os.FileInfo, err error) error {
 		// смотрим все файлы *.go, но не _gen.go
@@ -391,6 +387,6 @@ func parse_file(file_path string) {
 	}
 
 	if len(goFile.err_structs) > 0 {
-		saveStruct(&goFile, true)
+		saveStruct(&goFile, false)
 	}
 }
